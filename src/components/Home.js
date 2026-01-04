@@ -4,6 +4,8 @@ import { changeTabActive } from '../redux/actions';
 import useScrollAnimation from '../hooks/useScrollAnimation';
 import '../styles/Home.css';
 
+import { config } from '../data/config';
+
 function Home() {
     const scrollTab = useRef();
     const cardRef = useRef(null);
@@ -13,6 +15,7 @@ function Home() {
     // Reset active tab to home when mounting this component
     React.useEffect(() => {
         dispatch(changeTabActive('home'));
+        document.title = config.seo.title;
         window.scrollTo(0, 0); // Ensure we start at the top
     }, [dispatch]);
 
@@ -45,13 +48,13 @@ function Home() {
         <section ref={scrollTab} className='home' id='home'>
             <div className="content">
                 <div className="name">
-                    MY NAME IS <span>TRA HOANG TRONG</span>
+                    MY NAME IS <span>{config.name}</span>
                 </div>
                 <div className="des">
-                    Passionate about creating beautiful, functional web applications that solve real-world problems. I blend creativity with technical expertise to build exceptional digital experiences.
+                    {config.description}
                 </div>
 
-                <a href="/democv.pdf" target="_blank" rel="noopener noreferrer" className='animation active '>
+                <a href={config.cvLink} target="_blank" rel="noopener noreferrer" className='animation active '>
                     Download My CV
                 </a>
             </div>
@@ -82,10 +85,10 @@ function Home() {
                         style={{ display: imageLoaded ? 'block' : 'none' }}
                     />
                     <div className="info">
-                        <div>Developer</div>
-                        <div>VietNamese</div>
-                        <div>07/19/2004</div>
-                        <div>Male</div>
+                        <div>{config.role}</div>
+                        <div>{config.nationality}</div>
+                        <div>{config.birthday}</div>
+                        <div>{config.gender}</div>
                     </div>
                 </div>
             </div>

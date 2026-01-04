@@ -5,14 +5,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import '../styles/ProjectDetail.css';
+import { config } from '../data/config';
 
 const ProjectDetail = () => {
     const { id } = useParams();
     const project = projects.find(p => p.id === parseInt(id));
 
     useEffect(() => {
+        if (project) {
+            document.title = `${project.name} | ${config.name}`;
+        }
         window.scrollTo(0, 0);
-    }, []);
+    }, [project]);
 
     if (!project) {
         return <div className="project-not-found">Project not found</div>;

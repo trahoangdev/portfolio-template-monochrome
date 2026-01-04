@@ -1,8 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/NotFound.css';
+import { config } from '../data/config';
 
 const NotFound = () => {
+    React.useEffect(() => {
+        document.title = `404 Not Found | ${config.name}`;
+    }, []);
+
     return (
         <div className="not-found-container">
             <div className="glitch-wrapper">

@@ -1,71 +1,43 @@
-# project for test
+# Professional Monochrome Portfolio Template by trahoangdev
 
-A modern, high-performance personal portfolio website built with **React**, **Redux**, and purely **CSS**. This project features a sleek **Monochrome (Black & White)** aesthetic with advanced **3D interactions**, **Glassmorphism** effects, and a fully responsive design.
+A high-performance, developer-focused portfolio template built with **React**, **Redux**, and pure **CSS**. Designed for those who appreciate minimalism, glassmorphism, and performance.
 
-## ✨ Key Features
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![FontAwesome](https://img.shields.io/badge/Font_Awesome-333333?style=for-the-badge&logo=font-awesome&logoColor=white)
+![Markdown](https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white)
+![EmailJS](https://img.shields.io/badge/EmailJS-F15A24?style=for-the-badge&logo=mail-dot-ru&logoColor=white)
+![Vite](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
 
-- **🌓 Dynamic Dark/Light Theme**: 
-  - A robust theming system using CSS variables.
-  - Switches between a deep "Almost Black" dark mode and a crisp "Clean White" light mode.
-  - All elements, including gradients, shadows, and glass effects, adapt instantly.
+[Live Demo](https://example.com) | [Documentation Guide](docs/README.md)
 
-- **🖌️ Modern UI/UX**:
-  - **3D Interactive Avatar**: Mouse-following 3D tilt effect with dynamic lighting/glare.
-  - **Glassmorphism**: Premium frosted glass effects on cards, modals, and navigation.
-  - **Smooth Animations**: Intersection Observer-based scroll animations for reveal effects.
-  - **Detail Modals**: Expandable project cards with parallax images and detailed tech stacks.
+## ✨ Features
 
-- **📱 Fully Responsive**: Uses CSS Grid and Flexbox to ensure a perfect experience on Mobile, Tablet, and Desktop.
+- **🌓 Dynamic Dark/Light Theme**: Instant switching with CSS variables.
+- **🏷️ Centralized Config**: Change your name, bio, and links in one file (`config.js`).
+- **📝 Markdown-Ready Blog**: Simple file-based blogging with syntax highlighting.
+- **✉️ Functional Contact Form**: Built with EmailJS integration.
+- **🛸 Tech Stack Showcase**: Dedicated 'Uses' page and projects grid.
+- **🖌️ Modern UI**: 3D interactive avatar, skeleton loaders, and frosted glass effects.
+- **⚡ SEO Optimized**: Pre-configured OG tags and dynamic page titles.
 
-## 🛠️ Tech Stack
+## 🚀 Speed Run
 
-- **Frontend**: React.js (Hooks, Functional Components)
-- **State Management**: Redux (for Theme and Navigation state)
-- **Styling**: Modular CSS, CSS Variables (`var(--)`), CSS Modules approach
-- **Icons**: FontAwesome
-- **Hooks**: Custom `useScrollAnimation` for performance-optimized scroll events.
+1. `npm install`
+2. Update `src/data/config.js` with your information.
+3. Run `npm start`.
 
-## 📂 Project Structure
+## 📂 Customization
 
-```bash
-src/
-├── components/      # React Components (Home, NavBar, Projects, etc.)
-├── data/            # Static data files (projects.js, skills.js)
-├── hooks/           # Custom Hooks (useScrollAnimation.js)
-├── redux/           # Redux setup (actions, reducers, store)
-├── styles/          # Modular CSS files
-│   ├── variables.css # Global theme variables
-│   ├── global.css    # Global resets and typography
-│   └── [Component].css
-└── App.js           # Main Entry Point
-```
+This project is built to be easily customized. The design system is based on **CSS Variables**, meaning you can change the entire look (accent colors, fonts, blur intensity) by editing a few lines in `src/index.css`.
 
-## 🚀 Getting Started
-
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/trahoangdev/js-practice.git
-    cd js-practice
-    ```
-
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
-
-3.  **Run the development server:**
-    ```bash
-    npm start
-    ```
-    Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-## 🎨 Customization
-
-You can easily customize the theme colors by editing `src/styles/variables.css`. The project uses a semantic naming convention (e.g., `--primary-accent`, `--bg-color`) making it easy to swap the monochrome theme for any color palette.
+Check out the **[Detailed Documentation](docs/README.md)** for more info.
 
 ## 📄 License
 
-This project is open source and available under the [MIT License](LICENSE).
+MIT License - feel free to use this for your personal or professional projects.
 
 ---
-**Made with ❤️ by trahoangdev**
+**Template made by [trahoangdev](https://github.com/trahoangdev)**

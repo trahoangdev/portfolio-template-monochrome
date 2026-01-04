@@ -5,7 +5,7 @@ import { faInstagram, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-
 import useScrollAnimation from '../hooks/useScrollAnimation';
 import Toast from './Toast';
 import '../styles/Contacts.css';
-
+import { config } from '../data/config';
 import emailjs from '@emailjs/browser';
 
 // ...
@@ -43,7 +43,7 @@ function Contacts() {
       from_name: formData.name,
       from_email: formData.email,
       message: formData.message,
-      to_name: 'Tra Hoang Trong', // Your name
+      to_name: config.name, // Your name
     };
 
     emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
@@ -89,7 +89,7 @@ function Contacts() {
             <div className="icon"><FontAwesomeIcon icon={faPhone} /></div>
             <div className="text">
               <span>Phone</span>
-              <p>+84 842 366 570</p>
+              <p>{config.phone}</p>
             </div>
           </div>
 
@@ -97,7 +97,7 @@ function Contacts() {
             <div className="icon"><FontAwesomeIcon icon={faEnvelope} /></div>
             <div className="text">
               <span>Email</span>
-              <p>trahoangdev@gmail.com</p>
+              <p>{config.email}</p>
             </div>
           </div>
 
@@ -105,14 +105,14 @@ function Contacts() {
             <div className="icon"><FontAwesomeIcon icon={faMapMarkerAlt} /></div>
             <div className="text">
               <span>Location</span>
-              <p>Vietnam</p>
+              <p>{config.location}</p>
             </div>
           </div>
 
           <div className="social-links">
-            <a href="#" className="social-icon" aria-label="Github"><FontAwesomeIcon icon={faGithub} /></a>
-            <a href="#" className="social-icon" aria-label="LinkedIn"><FontAwesomeIcon icon={faLinkedin} /></a>
-            <a href="#" className="social-icon" aria-label="Instagram"><FontAwesomeIcon icon={faInstagram} /></a>
+            <a href={config.socials.github} className="social-icon" aria-label="Github"><FontAwesomeIcon icon={faGithub} /></a>
+            <a href={config.socials.linkedin} className="social-icon" aria-label="LinkedIn"><FontAwesomeIcon icon={faLinkedin} /></a>
+            <a href={config.socials.instagram} className="social-icon" aria-label="Instagram"><FontAwesomeIcon icon={faInstagram} /></a>
           </div>
         </div>
 

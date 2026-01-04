@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faLaptopCode, faKeyboard, faMicrochip } from '@fortawesome/free-solid-svg-icons';
 import '../styles/Uses.css';
+import { config } from '../data/config';
 
 const Uses = () => {
     useEffect(() => {
+        document.title = `Uses | ${config.name}`;
         window.scrollTo(0, 0);
     }, []);
 

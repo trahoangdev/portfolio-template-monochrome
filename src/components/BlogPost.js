@@ -8,6 +8,7 @@ import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import '../styles/BlogPost.css';
+import { config } from '../data/config';
 
 const BlogPost = () => {
     const { slug } = useParams();
@@ -39,6 +40,9 @@ const BlogPost = () => {
 
                     setMeta(metaObj);
                     setContent(body);
+                    if (metaObj.title) {
+                        document.title = `${metaObj.title} | ${config.name} Blog`;
+                    }
                 } else {
                     setContent(text);
                 }

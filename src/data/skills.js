@@ -1,4 +1,4 @@
-import { faReact, faHtml5, faCss3, faJs, faVuejs, faLaravel } from '@fortawesome/free-brands-svg-icons';
+import { faReact, faHtml5, faCss3, faJs, faVuejs, faNodeJs } from '@fortawesome/free-brands-svg-icons';
 
 export const skills = [
     {
@@ -22,13 +22,13 @@ export const skills = [
         icon: faReact
     },
     {
+        name: 'NodeJs',
+        des: 'Familiar with server-side JavaScript and Express framework.',
+        icon: faNodeJs
+    },
+    {
         name: 'VueJs',
         des: 'Familiar with Vue 3 and Composition API.',
         icon: faVuejs
-    },
-    {
-        name: 'Laravel',
-        des: 'Backend development experience with PHP Laravel framework.',
-        icon: faLaravel
     }
 ];
