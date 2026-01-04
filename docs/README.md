@@ -29,6 +29,16 @@ Welcome to the **Premium Monochrome Portfolio Template**! This project is design
 
 ---
 
+## 📚 Specialized Guides
+
+To make customization easier, check out these detailed guides:
+
+- [**Writing Blog Posts**](./BLOG_GUIDE.md) - How to use the Markdown blog system.
+- [**Theme Customization**](./THEME_CUSTOMIZATION.md) - Changing colors, fonts, and glass effects.
+- [**Troubleshooting**](./TROUBLESHOOTING.md) - Solutions for EmailJS and deployment issues.
+
+---
+
 ## 🎨 Customization Guide
 
 ### 1. Global Branding

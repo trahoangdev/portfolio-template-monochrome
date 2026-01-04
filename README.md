@@ -1,8 +1,17 @@
-# Professional Monochrome Portfolio Template
+# Professional Monochrome Portfolio Template by trahoangdev
 
 A high-performance, developer-focused portfolio template built with **React**, **Redux**, and pure **CSS**. Designed for those who appreciate minimalism, glassmorphism, and performance.
 
-[Live Demo Placeholder](https://example.com) | [Documentation Guide](docs/README.md)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![FontAwesome](https://img.shields.io/badge/Font_Awesome-333333?style=for-the-badge&logo=font-awesome&logoColor=white)
+![Markdown](https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white)
+![EmailJS](https://img.shields.io/badge/EmailJS-F15A24?style=for-the-badge&logo=mail-dot-ru&logoColor=white)
+![Vite](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+
+[Live Demo](https://example.com) | [Documentation Guide](docs/README.md)
 
 ## ✨ Features
 
