@@ -159,26 +159,59 @@ section.home {
     section.home {
         grid-template-columns: 1fr;
         text-align: center;
-        padding-top: 120px;
-        gap: 40px;
+        padding-top: 140px;
+        /* Increased top padding for mobile header */
+        gap: 60px;
+        min-height: auto;
+        /* Allow auto height on mobile */
+        padding-bottom: 50px;
+    }
+
+    .home .content {
+        order: 2;
+        /* Put content below avatar on tablet/mobile */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .home .avatar {
+        order: 1;
+        /* Avatar first */
+        width: 100%;
     }
 
     .home .name {
-        font-size: 4rem;
+        font-size: 3.5rem;
     }
 
     .home .des {
         margin: 30px auto;
-        text-align: left;
+        text-align: center;
+        /* Center text on mobile */
+        border-left: none;
+        /* Remove border */
+        border-bottom: 4px solid var(--primary-accent);
+        /* Add bottom border instead */
+        padding-left: 0;
+        padding-bottom: 20px;
     }
 
     .home .card {
         margin: auto;
+        width: min(90%, 350px);
+        /* Slightly smaller card */
     }
 }
 
 @media screen and (max-width: 600px) {
     .home .name {
-        font-size: 3rem;
+        font-size: 2.5rem;
+        /* Smaller font for small screens */
+    }
+
+    .home .card img {
+        height: 350px;
+        /* Reduce image height */
     }
 }

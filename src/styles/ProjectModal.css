@@ -187,6 +187,7 @@
 }
 
 /* Response Design */
+/* Response Design */
 @media (max-width: 900px) {
     .modal-body {
         grid-template-columns: 1fr;
@@ -194,5 +195,20 @@
 
     .modal-image {
         padding: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .links {
+        flex-direction: column;
+    }
+
+    .btn {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .modal-info h2 {
+        font-size: 2rem;
     }
 }

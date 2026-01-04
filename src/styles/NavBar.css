@@ -8,7 +8,8 @@ header {
     align-items: center;
     justify-content: center;
     /* Centered content wrapper */
-    z-index: 1000;
+    z-index: 1002;
+    /* High priority to sit above overlay */
     transition: 0.3s;
     background: var(--glass-bg);
     backdrop-filter: var(--glass-backdrop);
@@ -82,28 +83,85 @@ header nav span.active::after {
 @media screen and (max-width: 768px) {
     .icon-bar {
         display: block;
+        z-index: 1003;
+        /* Highest priority */
     }
 
     header nav {
         position: fixed;
-        top: var(--header-height);
+        top: 0;
         right: -100%;
-        width: 70%;
-        height: calc(100vh - var(--header-height));
+        width: 80%;
+        /* Wider drawer */
+        max-width: 300px;
+        height: 100vh;
         flex-direction: column;
-        background: rgba(2, 6, 23, 0.95);
-        backdrop-filter: blur(20px);
-        padding: 50px;
-        gap: 30px;
-        align-items: flex-start;
-        /* Left align items */
-        transition: 0.4s ease-in-out;
-        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
-        border-left: 1px solid rgba(255, 255, 255, 0.1);
+        background: var(--bg-color);
+
+        /* Solid background for better readability */
+        @supports (background: color-mix(in srgb, var(--bg-color), transparent 10%)) {
+            background: color-mix(in srgb, var(--bg-color), transparent 5%);
+        }
+
+        backdrop-filter: blur(25px);
+        padding: 100px 30px;
+        /* Top padding to clear header */
+        gap: 40px;
+        align-items: center;
+        /* Center items horizontally */
+        justify-content: flex-start;
+        /* Start from top but padded */
+        transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+        border-left: 1px solid var(--glass-border);
+        /* Subtle border */
+        z-index: 1002;
+        /* Above overlay */
     }
 
     header nav.active {
         right: 0;
+    }
+
+    /* Mobile Menu Items */
+    header nav span {
+        font-size: 1.5rem;
+        width: 100%;
+        text-align: center;
+        padding: 15px;
+        border-radius: 15px;
+    }
+
+    header nav span:hover,
+    header nav span.active {
+        background: var(--glass-hover-bg);
+        transform: scale(1.05);
+    }
+
+    header nav span.active::after {
+        display: none;
+        /* Remove underline for mobile, use box style */
+    }
+
+    /* Overlay for Mobile Menu */
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(5px);
+        z-index: 1000;
+        /* Behind header (1002) but above content */
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.4s ease;
+    }
+
+    .overlay.active {
+        opacity: 1;
+        visibility: visible;
     }
 }
 
