@@ -1,71 +1,54 @@
-# project for test
+# Professional Monochrome Portfolio
 
 A modern, high-performance personal portfolio website built with **React**, **Redux**, and purely **CSS**. This project features a sleek **Monochrome (Black & White)** aesthetic with advanced **3D interactions**, **Glassmorphism** effects, and a fully responsive design.
 
 ## ✨ Key Features
 
-- **🌓 Dynamic Dark/Light Theme**: 
-  - A robust theming system using CSS variables.
-  - Switches between a deep "Almost Black" dark mode and a crisp "Clean White" light mode.
-  - All elements, including gradients, shadows, and glass effects, adapt instantly.
-
+- **🌓 Dynamic Dark/Light Theme**: Robust system using CSS variables.
+- **📝 Markdown Blog System**: Write tech notes in `.md` files with code syntax highlighting.
+- **✉️ Functional Contact Form**: Integrated with **EmailJS** for direct inbox messaging.
+- **🛸 Uses Page**: A dedicated page for your workspace gear and software.
 - **🖌️ Modern UI/UX**:
-  - **3D Interactive Avatar**: Mouse-following 3D tilt effect with dynamic lighting/glare.
+  - **3D Interactive Avatar**: Mouse-following 3D tilt effect with dynamic glare.
   - **Glassmorphism**: Premium frosted glass effects on cards, modals, and navigation.
-  - **Smooth Animations**: Intersection Observer-based scroll animations for reveal effects.
-  - **Detail Modals**: Expandable project cards with parallax images and detailed tech stacks.
-
-- **📱 Fully Responsive**: Uses CSS Grid and Flexbox to ensure a perfect experience on Mobile, Tablet, and Desktop.
+  - **Smooth Animations**: Reveal effects on scroll and a custom **Preloader**.
+- **📱 Fully Responsive**: Optimized for Mobile, Tablet, and Desktop.
+- **⚡ Performance First**: Assets optimized (WebP), code-splitting, and SEO best practices.
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React.js (Hooks, Functional Components)
-- **State Management**: Redux (for Theme and Navigation state)
-- **Styling**: Modular CSS, CSS Variables (`var(--)`), CSS Modules approach
+- **Frontend**: React.js, React Router, React Markdown
+- **State Management**: Redux
 - **Icons**: FontAwesome
-- **Hooks**: Custom `useScrollAnimation` for performance-optimized scroll events.
+- **Email Service**: EmailJS
+- **Content**: Markdown (GFM)
 
 ## 📂 Project Structure
 
 ```bash
 src/
-├── components/      # React Components (Home, NavBar, Projects, etc.)
-├── data/            # Static data files (projects.js, skills.js)
-├── hooks/           # Custom Hooks (useScrollAnimation.js)
-├── redux/           # Redux setup (actions, reducers, store)
+├── components/      # React Components (Blog, Projects, Contacts, etc.)
+├── data/            # Static data (Skills, Projects)
+├── redux/           # Redux setup
 ├── styles/          # Modular CSS files
-│   ├── variables.css # Global theme variables
-│   ├── global.css    # Global resets and typography
-│   └── [Component].css
-└── App.js           # Main Entry Point
+└── App.js           # Navigation and Routes
+public/
+└── posts/           # Blog content (.md)
 ```
 
 ## 🚀 Getting Started
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/trahoangdev/js-practice.git
-    cd js-practice
-    ```
+1. **Install dependencies:** `npm install`
+2. **Setup .env:** Add your EmailJS keys (see [Documentation](docs/README.md)).
+3. **Run locally:** `npm start`
 
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
+## 📖 Detailed Documentation
 
-3.  **Run the development server:**
-    ```bash
-    npm start
-    ```
-    Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-## 🎨 Customization
-
-You can easily customize the theme colors by editing `src/styles/variables.css`. The project uses a semantic naming convention (e.g., `--primary-accent`, `--bg-color`) making it easy to swap the monochrome theme for any color palette.
+For a full guide on how to add projects, write blog posts, and configure the email service, please refer to the **[Detailed Documentation Guide](docs/README.md)**.
 
 ## 📄 License
 
 This project is open source and available under the [MIT License](LICENSE).
 
 ---
-**Made with ❤️ by trahoangdev**
+**Crafted with ❤️ by Tra Hoang Trong**

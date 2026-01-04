@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import '../styles/NotFound.css';
 
 const NotFound = () => {
+    React.useEffect(() => {
+        document.title = "404 Not Found | Tra Hoang Trong";
+    }, []);
+
     return (
         <div className="not-found-container">
             <div className="glitch-wrapper">

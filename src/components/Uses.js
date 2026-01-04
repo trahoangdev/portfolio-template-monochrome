@@ -6,6 +6,7 @@ import '../styles/Uses.css';
 
 const Uses = () => {
     useEffect(() => {
+        document.title = "Uses | Tra Hoang Trong";
         window.scrollTo(0, 0);
     }, []);
 

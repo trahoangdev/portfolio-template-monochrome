@@ -6,6 +6,7 @@ import '../styles/Blog.css';
 
 const Blog = () => {
     useEffect(() => {
+        document.title = "Tech Notes | Tra Hoang Trong";
         window.scrollTo(0, 0);
     }, []);
 

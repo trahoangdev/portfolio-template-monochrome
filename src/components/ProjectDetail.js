@@ -11,8 +11,11 @@ const ProjectDetail = () => {
     const project = projects.find(p => p.id === parseInt(id));
 
     useEffect(() => {
+        if (project) {
+            document.title = `${project.name} | Tra Hoang Trong`;
+        }
         window.scrollTo(0, 0);
-    }, []);
+    }, [project]);
 
     if (!project) {
         return <div className="project-not-found">Project not found</div>;

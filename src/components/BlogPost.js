@@ -39,6 +39,9 @@ const BlogPost = () => {
 
                     setMeta(metaObj);
                     setContent(body);
+                    if (metaObj.title) {
+                        document.title = `${metaObj.title} | Tra Hoang Trong Blog`;
+                    }
                 } else {
                     setContent(text);
                 }

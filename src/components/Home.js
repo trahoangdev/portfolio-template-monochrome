@@ -13,6 +13,7 @@ function Home() {
     // Reset active tab to home when mounting this component
     React.useEffect(() => {
         dispatch(changeTabActive('home'));
+        document.title = "Tra Hoang Trong | Portfolio";
         window.scrollTo(0, 0); // Ensure we start at the top
     }, [dispatch]);
 
