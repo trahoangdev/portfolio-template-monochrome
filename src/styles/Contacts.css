@@ -151,10 +151,55 @@ section.contacts {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
+.submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+    filter: grayscale(1);
+    box-shadow: none;
+}
+
 /* Responsive */
 @media (max-width: 900px) {
     .contact-container {
         grid-template-columns: 1fr;
         gap: 50px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    section.contacts {
+        padding: 50px 0 100px;
+        /* Reduce vertical padding */
+    }
+
+    .contact-container {
+        gap: 40px;
+        margin-top: 30px;
+        padding: 0 10px;
+        /* Ensure content doesn't touch edges */
+    }
+
+    .contact-info {
+        padding: 25px;
+        /* Smaller padding for card */
+        border-radius: 20px;
+    }
+
+    .contact-info h3 {
+        font-size: 1.5rem;
+    }
+
+    .info-item .icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .submit-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 14px 20px;
+        /* Slightly smaller button */
     }
 }

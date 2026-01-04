@@ -6,12 +6,7 @@ const useScrollAnimation = (refTab = null, refList = null) => {
   const divs = refList;
   const activeTab = useSelector(state => state.activeTab);
 
-  useEffect(() => {
-    // Scroll to the active tab if it matches
-    if (scrollTab && scrollTab.current && scrollTab.current.classList.contains(activeTab)) {
-      scrollTab.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [activeTab, scrollTab]); // Separate effect for scrolling
+
 
   useEffect(() => {
     // Animation logic

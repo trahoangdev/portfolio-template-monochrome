@@ -80,6 +80,10 @@ section.projects {
     gap: 20px;
     align-items: flex-start;
     transition: 0.3s;
+    backdrop-filter: blur(10px);
+    /* Improve contrast */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    /* Slightly stronger border */
 }
 
 .projects .mission:hover {
@@ -105,6 +109,12 @@ section.projects {
     margin: 0;
     font-size: 0.9rem;
     color: var(--text-secondary);
+    /* Ensure sufficient contrast */
+    color: rgba(255, 255, 255, 0.8);
+}
+
+[data-theme='light'] .projects .mission .des {
+    color: rgba(0, 0, 0, 0.7);
 }
 
 @media screen and (max-width: 900px) {
@@ -114,5 +124,35 @@ section.projects {
         grid-template-columns: 1fr;
         gap: 40px;
         direction: ltr;
+        /* Ensure always LTR on mobile */
+    }
+
+    .projects .list {
+        gap: 80px;
+        margin-top: 50px;
+    }
+
+    .projects .images {
+        margin: 0 20px;
+    }
+
+    .projects .content {
+        padding: 0 20px;
+        text-align: center;
+    }
+
+    .projects .content .des {
+        text-align: center;
+    }
+
+    .projects .content h3 {
+        text-align: center;
+        width: 100%;
+    }
+
+    .projects .mission {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
 }

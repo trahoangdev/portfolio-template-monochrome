@@ -3,11 +3,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane, faEnvelope, faPhone, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { faInstagram, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import useScrollAnimation from '../hooks/useScrollAnimation';
+import Toast from './Toast';
 import '../styles/Contacts.css';
+
+import emailjs from '@emailjs/browser';
+
+// ...
 
 function Contacts() {
   const divs = useRef([]);
   const scrollTab = useRef();
+  const formRef = useRef(); // Add ref for form
   useScrollAnimation(scrollTab, divs);
 
   const [formData, setFormData] = useState({
@@ -16,18 +22,56 @@ function Contacts() {
     message: ''
   });
 
+  const [toast, setToast] = useState(null);
+  const [isSending, setIsSending] = useState(false);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Thank you for your message! This is a demo form.');
-    setFormData({ name: '', email: '', message: '' });
+    setIsSending(true);
+
+    // Replace with your actual EmailJS credentials
+    // You can get these from https://dashboard.emailjs.com/admin
+    const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+    const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+    const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      message: formData.message,
+      to_name: 'Tra Hoang Trong', // Your name
+    };
+
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
+      .then((result) => {
+        setToast({ message: 'Message sent successfully!', type: 'success' });
+        setFormData({ name: '', email: '', message: '' });
+      }, (error) => {
+        console.error("EmailJS Error:", error);
+        if (error.status === 412) {
+          setToast({ message: 'Config Error: Reconnect Gmail in EmailJS Dashboard.', type: 'error' });
+        } else {
+          setToast({ message: 'Failed to send message. Please try again.', type: 'error' });
+        }
+      })
+      .finally(() => {
+        setIsSending(false);
+      });
   }
 
   return (
-    <section className='contacts' ref={scrollTab}>
+    <section className='contacts' ref={scrollTab} id='contacts'>
+      {toast && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast(null)}
+        />
+      )}
       <div className="title" ref={(el) => (divs.current[0] = el)}>
         Get In Touch
       </div>
@@ -66,9 +110,9 @@ function Contacts() {
           </div>
 
           <div className="social-links">
-            <a href="#" className="social-icon"><FontAwesomeIcon icon={faGithub} /></a>
-            <a href="#" className="social-icon"><FontAwesomeIcon icon={faLinkedin} /></a>
-            <a href="#" className="social-icon"><FontAwesomeIcon icon={faInstagram} /></a>
+            <a href="#" className="social-icon" aria-label="Github"><FontAwesomeIcon icon={faGithub} /></a>
+            <a href="#" className="social-icon" aria-label="LinkedIn"><FontAwesomeIcon icon={faLinkedin} /></a>
+            <a href="#" className="social-icon" aria-label="Instagram"><FontAwesomeIcon icon={faInstagram} /></a>
           </div>
         </div>
 
@@ -110,8 +154,8 @@ function Contacts() {
             ></textarea>
           </div>
 
-          <button type="submit" className="submit-btn">
-            Send Message <FontAwesomeIcon icon={faPaperPlane} />
+          <button type="submit" className="submit-btn" disabled={isSending}>
+            {isSending ? 'Sending...' : 'Send Message'} <FontAwesomeIcon icon={faPaperPlane} />
           </button>
         </form>
       </div>
