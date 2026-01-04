@@ -1,54 +1,34 @@
-# Professional Monochrome Portfolio
+# Professional Monochrome Portfolio Template
 
-A modern, high-performance personal portfolio website built with **React**, **Redux**, and purely **CSS**. This project features a sleek **Monochrome (Black & White)** aesthetic with advanced **3D interactions**, **Glassmorphism** effects, and a fully responsive design.
+A high-performance, developer-focused portfolio template built with **React**, **Redux**, and pure **CSS**. Designed for those who appreciate minimalism, glassmorphism, and performance.
 
-## ✨ Key Features
+[Live Demo Placeholder](https://example.com) | [Documentation Guide](docs/README.md)
 
-- **🌓 Dynamic Dark/Light Theme**: Robust system using CSS variables.
-- **📝 Markdown Blog System**: Write tech notes in `.md` files with code syntax highlighting.
-- **✉️ Functional Contact Form**: Integrated with **EmailJS** for direct inbox messaging.
-- **🛸 Uses Page**: A dedicated page for your workspace gear and software.
-- **🖌️ Modern UI/UX**:
-  - **3D Interactive Avatar**: Mouse-following 3D tilt effect with dynamic glare.
-  - **Glassmorphism**: Premium frosted glass effects on cards, modals, and navigation.
-  - **Smooth Animations**: Reveal effects on scroll and a custom **Preloader**.
-- **📱 Fully Responsive**: Optimized for Mobile, Tablet, and Desktop.
-- **⚡ Performance First**: Assets optimized (WebP), code-splitting, and SEO best practices.
+## ✨ Features
 
-## 🛠️ Tech Stack
+- **🌓 Dynamic Dark/Light Theme**: Instant switching with CSS variables.
+- **🏷️ Centralized Config**: Change your name, bio, and links in one file (`config.js`).
+- **📝 Markdown-Ready Blog**: Simple file-based blogging with syntax highlighting.
+- **✉️ Functional Contact Form**: Built with EmailJS integration.
+- **🛸 Tech Stack Showcase**: Dedicated 'Uses' page and projects grid.
+- **🖌️ Modern UI**: 3D interactive avatar, skeleton loaders, and frosted glass effects.
+- **⚡ SEO Optimized**: Pre-configured OG tags and dynamic page titles.
 
-- **Frontend**: React.js, React Router, React Markdown
-- **State Management**: Redux
-- **Icons**: FontAwesome
-- **Email Service**: EmailJS
-- **Content**: Markdown (GFM)
+## 🚀 Speed Run
 
-## 📂 Project Structure
+1. `npm install`
+2. Update `src/data/config.js` with your information.
+3. Run `npm start`.
 
-```bash
-src/
-├── components/      # React Components (Blog, Projects, Contacts, etc.)
-├── data/            # Static data (Skills, Projects)
-├── redux/           # Redux setup
-├── styles/          # Modular CSS files
-└── App.js           # Navigation and Routes
-public/
-└── posts/           # Blog content (.md)
-```
+## 📂 Customization
 
-## 🚀 Getting Started
+This project is built to be easily customized. The design system is based on **CSS Variables**, meaning you can change the entire look (accent colors, fonts, blur intensity) by editing a few lines in `src/index.css`.
 
-1. **Install dependencies:** `npm install`
-2. **Setup .env:** Add your EmailJS keys (see [Documentation](docs/README.md)).
-3. **Run locally:** `npm start`
-
-## 📖 Detailed Documentation
-
-For a full guide on how to add projects, write blog posts, and configure the email service, please refer to the **[Detailed Documentation Guide](docs/README.md)**.
+Check out the **[Detailed Documentation](docs/README.md)** for more info.
 
 ## 📄 License
 
-This project is open source and available under the [MIT License](LICENSE).
+MIT License - feel free to use this for your personal or professional projects.
 
 ---
-**Crafted with ❤️ by Tra Hoang Trong**
+**Template made by [trahoangdev](https://github.com/trahoangdev)**

@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import '../styles/ProjectDetail.css';
+import { config } from '../data/config';
 
 const ProjectDetail = () => {
     const { id } = useParams();
@@ -12,7 +13,7 @@ const ProjectDetail = () => {
 
     useEffect(() => {
         if (project) {
-            document.title = `${project.name} | Tra Hoang Trong`;
+            document.title = `${project.name} | ${config.name}`;
         }
         window.scrollTo(0, 0);
     }, [project]);

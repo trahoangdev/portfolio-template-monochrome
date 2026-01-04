@@ -1,32 +1,32 @@
 export const projects = [
     {
         id: 1,
-        name: 'E-Commerce Platform',
-        des: 'Developed a scalable e-commerce solution using the MERN stack, handling over 10,000 requests/day. Implemented secure JWT authentication, optimized MongoDB aggregation pipelines for product filtering, and integrated Stripe Connect for multi-vendor payments.',
-        mission: 'Lead Full-stack Developer',
-        language: 'React, Redux, Node.js, Express, MongoDB, Stripe API',
+        name: 'Project One Title',
+        des: 'Detailed description of your first showcase project. Mention the problem it solves and your technical contribution.',
+        mission: 'Lead Developer',
+        language: 'React, Node.js, MongoDB',
         images: '/project1.webp',
         demoUrl: 'https://example.com',
-        githubUrl: 'https://github.com'
+        githubUrl: 'https://github.com/yourusername/project-one'
     },
     {
         id: 2,
-        name: 'DevChat - Real-time Messaging',
-        des: 'Architected a high-concurrency websocket server supporting 500+ active connections per node. Leveraged Redis Pub/Sub for horizontal scaling and Docker for containerized deployment. Features include end-to-end encrypted private chats and slack-like channels.',
-        mission: 'Backend Lead',
-        language: 'React, TypeScript, Node.js, Socket.io, Redis, Docker',
+        name: 'Project Two Title',
+        des: 'Detailed description of your second showcase project. Highlight key features, performance optimizations, or architectural decisions.',
+        mission: 'Frontend Artist',
+        language: 'Next.js, TypeScript, TailwindCSS',
         images: '/project2.webp',
         demoUrl: 'https://example.com',
-        githubUrl: 'https://github.com'
+        githubUrl: 'https://github.com/yourusername/project-two'
     },
     {
         id: 3,
-        name: 'Personal Portfolio V2',
-        des: 'A showcase of modern frontend capabilities featuring a custom-built scrolling engine, glassmorphism UI system, and dynamic theme switching with local storage persistence. Achieved 100/100 Lighthouse performance score through code splitting and asset optimization.',
-        mission: 'Frontend Architect',
-        language: 'React, Redux, SCSS, Webpack',
+        name: 'Project Three Title',
+        des: 'Detailed description of your third showcase project. Focus on user experience, design system, or specific complex logic you implemented.',
+        mission: 'UI/UX Designer',
+        language: 'React, Redux, SCSS',
         images: '/project2.webp',
         demoUrl: 'https://example.com',
-        githubUrl: 'https://github.com'
+        githubUrl: 'https://github.com/yourusername/project-three'
     }
 ];

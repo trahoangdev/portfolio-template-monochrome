@@ -6,6 +6,8 @@ import { faBars, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
 import '../styles/NavBar.css';
 
+import { config } from "../data/config";
+
 const NavBar = ({ activeTab, theme }) => {
     const dispatch = useDispatch();
     const [linkNav] = useState(['home', 'skills', 'projects', 'contacts']);
@@ -42,7 +44,7 @@ const NavBar = ({ activeTab, theme }) => {
                 <div className="container">
                     <div className="logo">
                         <img src={theme === 'dark' ? "/logo-light.webp" : "/logo-dark.webp"} alt="Logo" />
-                        TRAHOANGDEV
+                        {config.nickname}
                     </div>
                     <nav className={statusNav}>
                         {
