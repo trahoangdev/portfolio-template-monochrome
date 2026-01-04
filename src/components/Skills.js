@@ -11,7 +11,7 @@ function Skills() {
   const [listSkills] = useState(skills);
 
   return (
-    <section className='skills' ref={scrollTab}>
+    <section className='skills' ref={scrollTab} id='skills'>
       <div className="title" ref={(el) => (divs.current[0] = el)}>
         My Skills
       </div>

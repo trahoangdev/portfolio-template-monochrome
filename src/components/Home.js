@@ -32,7 +32,7 @@ function Home() {
     };
 
     return (
-        <section ref={scrollTab} className='home'>
+        <section ref={scrollTab} className='home' id='home'>
             <div className="content">
                 <div className="name">
                     MY NAME IS <span>TRA HOANG TRONG</span>

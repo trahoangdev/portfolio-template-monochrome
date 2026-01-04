@@ -16,7 +16,7 @@ function Projects() {
   useScrollAnimation(scrollTab, divs);
 
   return (
-    <section className='projects' ref={scrollTab}>
+    <section className='projects' ref={scrollTab} id='projects'>
       <div className="title" ref={(el) => (divs.current[0] = el)}>
         My Projects
       </div>

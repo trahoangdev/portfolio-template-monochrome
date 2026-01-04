@@ -57,6 +57,7 @@ header nav span:hover,
 header nav span.active {
     color: var(--text-primary);
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
 }
 
 header nav span.active::after {

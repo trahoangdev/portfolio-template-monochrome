@@ -27,7 +27,7 @@ function Contacts() {
   }
 
   return (
-    <section className='contacts' ref={scrollTab}>
+    <section className='contacts' ref={scrollTab} id='contacts'>
       <div className="title" ref={(el) => (divs.current[0] = el)}>
         Get In Touch
       </div>
