@@ -13,7 +13,6 @@ import emailjs from '@emailjs/browser';
 function Contacts() {
   const divs = useRef([]);
   const scrollTab = useRef();
-  const formRef = useRef(); // Add ref for form
   useScrollAnimation(scrollTab, divs);
 
   const [formData, setFormData] = useState({
