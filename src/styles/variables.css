@@ -1,0 +1,59 @@
+:root {
+    /* BLACK & WHITE THEME - DARK MODE DEFAULT */
+    --bg-color: #0a0a0a;
+    /* Almost Black */
+    --text-primary: #ffffff;
+    --text-secondary: #a3a3a3;
+    /* Neutral Gray */
+
+    /* Accents - High Contrast Monochrome */
+    --primary-accent: #ffffff;
+    --secondary-accent: #525252;
+    /* Darker Gray */
+    --highlight: #ffffff;
+
+    /* Glass Effect - Dark */
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    --glass-backdrop: blur(10px);
+    --glass-hover-bg: rgba(255, 255, 255, 0.1);
+
+    /* Layout */
+    --max-width: 1300px;
+    --header-height: 70px;
+
+    /* Typography */
+    --font-primary: 'Poppins', sans-serif;
+    --font-heading: 'MuseoModerno', system-ui;
+
+    /* Gradients */
+    --title-gradient-from: #ffffff;
+    --title-gradient-to: #737373;
+    /* Fade to gray */
+    --name-gradient: linear-gradient(to right, #ffffff, #a3a3a3, #525252);
+}
+
+[data-theme='light'] {
+    /* BLACK & WHITE THEME - LIGHT MODE */
+    --bg-color: #ffffff;
+    --text-primary: #000000;
+    --text-secondary: #525252;
+
+    /* Accents - Inverted */
+    --primary-accent: #000000;
+    --secondary-accent: #d4d4d4;
+    --highlight: #000000;
+
+    /* Glass Effect - Light */
+    --glass-bg: rgba(0, 0, 0, 0.03);
+    /* Subtle dark tint */
+    --glass-border: 1px solid rgba(0, 0, 0, 0.1);
+    --glass-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    --glass-hover-bg: rgba(0, 0, 0, 0.08);
+
+    /* Gradients */
+    --title-gradient-from: #000000;
+    --title-gradient-to: #525252;
+    --name-gradient: linear-gradient(to right, #000000, #525252, #a3a3a3);
+}

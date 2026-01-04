@@ -1,0 +1,118 @@
+section.projects {
+    padding: 100px 0;
+}
+
+.projects .list {
+    display: flex;
+    flex-direction: column;
+    gap: 120px;
+    margin-top: 80px;
+}
+
+.projects .item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Image left, content right */
+    gap: 50px;
+    align-items: center;
+}
+
+/* Alternate Layout */
+.projects .item:nth-child(even) {
+    direction: rtl;
+    /* Simple way to flip for grid */
+}
+
+.projects .item:nth-child(even) .content {
+    direction: ltr;
+    /* Reset text direction */
+}
+
+.projects .item:nth-child(even) .images {
+    direction: ltr;
+    /* Reset image wrapper direction */
+}
+
+/* Image Wrapper */
+.projects .images {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transition: 0.3s;
+}
+
+.projects .images img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: 0.5s ease;
+    filter: brightness(0.9);
+}
+
+.projects .item:hover .images img {
+    transform: scale(1.03);
+    filter: brightness(1.1);
+}
+
+/* Content */
+.projects .content h3 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, var(--title-gradient-from), var(--title-gradient-to));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.projects .content .des {
+    text-align: left;
+    margin-left: 0;
+    margin-bottom: 30px;
+}
+
+.projects .mission {
+    margin-top: 25px;
+    padding: 20px;
+    background: var(--glass-bg);
+    border: var(--glass-border);
+    border-radius: 15px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    transition: 0.3s;
+}
+
+.projects .mission:hover {
+    background: var(--glass-hover-bg);
+}
+
+.projects .mission svg {
+    font-size: 1.5rem;
+    color: var(--highlight);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px;
+    border-radius: 12px;
+    box-sizing: content-box;
+}
+
+.projects .mission h4 {
+    margin: 0 0 5px 0;
+    font-size: 1rem;
+    color: var(--text-primary);
+}
+
+.projects .mission .des {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+@media screen and (max-width: 900px) {
+
+    .projects .item,
+    .projects .item:nth-child(even) {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        direction: ltr;
+    }
+}

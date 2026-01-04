@@ -1,0 +1,184 @@
+section.home {
+    padding-top: 100px;
+    /* Reduced from 180px */
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    align-items: center;
+    gap: 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background blob effect */
+/* Background blob effect removed to prevent clipping artifacts */
+
+.home .content {
+    font-family: var(--font-heading);
+    z-index: 1;
+}
+
+.home .name {
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.home .name span {
+    background: var(--name-gradient);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 4s linear infinite;
+    display: block;
+}
+
+[data-theme='light'] .home .name span {
+    background: var(--name-gradient);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.home .des {
+    font-family: var(--font-primary);
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin: 30px 0 50px;
+    border-left: 4px solid var(--primary-accent);
+    padding-left: 20px;
+    max-width: 600px;
+    line-height: 1.8;
+}
+
+.home a {
+    display: inline-block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--bg-color);
+    background: var(--text-primary);
+    padding: 18px 40px;
+    border-radius: 50px;
+    border: 2px solid transparent;
+    /* Prevent layout shift */
+    transition: 0.3s ease;
+    box-shadow: 0 10px 20px rgba(100, 100, 100, 0.2);
+    /* Neutral shadow */
+}
+
+.home a:hover {
+    transform: translateY(-5px);
+    background: transparent;
+    color: var(--text-primary);
+    border-color: var(--text-primary);
+    box-shadow: 0 15px 30px rgba(100, 100, 100, 0.4);
+}
+
+/* Avatar Card */
+.home .avatar {
+    display: flex;
+    justify-content: center;
+    perspective: 1000px;
+}
+
+.home .card {
+    position: relative;
+    width: min(100%, 400px);
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: var(--glass-border);
+    border-radius: 30px;
+    padding: 15px;
+    box-shadow: var(--glass-shadow);
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out, box-shadow 0.3s ease;
+    /* Faster transition for interaction */
+    overflow: hidden;
+    /* For glare */
+}
+
+/* Hover effect handled by JS, but we keep shadow hover */
+.home .card:hover {
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+}
+
+/* Glare Effect */
+.glare {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    z-index: 2;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+}
+
+.home .card img {
+    width: 100%;
+    height: 450px;
+    /* Fixed height for consistency */
+    border-radius: 20px;
+    object-fit: cover;
+    object-position: top;
+    transform: translateZ(20px);
+    /* Pop out image slightly */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.home .info {
+    /* No more white background, stick to glass/dark theme */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    padding: 10px 10px 20px;
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.home .info div {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.home .info div:nth-child(2n+1) {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: -10px;
+    /* Visual label adjustment */
+}
+
+
+@media screen and (max-width: 1024px) {
+    section.home {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-top: 120px;
+        gap: 40px;
+    }
+
+    .home .name {
+        font-size: 4rem;
+    }
+
+    .home .des {
+        margin: 30px auto;
+        text-align: left;
+    }
+
+    .home .card {
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .home .name {
+        font-size: 3rem;
+    }
+}
