@@ -1,10 +1,7 @@
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
 
 const useScrollAnimation = (refTab = null, refList = null) => {
-  const scrollTab = refTab;
   const divs = refList;
-  const activeTab = useSelector(state => state.activeTab);
 
 
 
