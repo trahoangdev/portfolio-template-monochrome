@@ -3,6 +3,7 @@ import { connect, useDispatch } from "react-redux";
 import { changeTabActive, changeTheme } from '../redux/actions';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
+import { Link } from 'react-router-dom';
 import '../styles/NavBar.css';
 
 const NavBar = ({ activeTab, theme }) => {
@@ -40,7 +41,7 @@ const NavBar = ({ activeTab, theme }) => {
             <header>
                 <div className="container">
                     <div className="logo">
-                        <img src={theme === 'dark' ? "/logo-light.png" : "/logo-dark.png"} alt="Logo" />
+                        <img src={theme === 'dark' ? "/logo-light.webp" : "/logo-dark.webp"} alt="Logo" />
                         TRAHOANGDEV
                     </div>
                     <nav className={statusNav}>
@@ -51,12 +52,13 @@ const NavBar = ({ activeTab, theme }) => {
                                     onClick={() => changeTab(value)}>{value}</span>
                             ))
                         }
+                        <Link to="/blog" onClick={toggleNav}>Tech Notes</Link>
                     </nav>
                     <div className="actions">
-                        <button className="theme-toggle" onClick={toggleTheme}>
+                        <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
                             <FontAwesomeIcon icon={theme === 'dark' ? faSun : faMoon} />
                         </button>
-                        <div className="icon-bar" onClick={toggleNav}>
+                        <div className="icon-bar" onClick={toggleNav} aria-label="Toggle menu" role="button" tabIndex={0}>
                             <FontAwesomeIcon icon={faBars} />
                         </div>
                     </div>

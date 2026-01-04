@@ -77,29 +77,31 @@
 }
 
 .modal-body {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .modal-image {
     background: var(--glass-bg);
-    /* Was hardcoded dark blue */
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px;
+    padding: 0;
+    width: 100%;
 }
 
 .modal-image img {
     width: 100%;
     height: auto;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    object-fit: cover;
+    border-radius: 20px 20px 0 0;
+    /* Rounded corners only on top */
+    box-shadow: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .modal-info {
-    padding: 40px;
+    padding: 30px 40px;
     display: flex;
     flex-direction: column;
 }
@@ -148,12 +150,15 @@
 .links {
     margin-top: auto;
     display: flex;
-    gap: 15px;
+    gap: 10px;
+    flex-wrap: wrap;
+    /* Allow wrapping if space is tight */
 }
 
 .btn {
-    padding: 12px 24px;
+    padding: 10px 20px;
     border-radius: 12px;
+    font-size: 0.95rem;
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -188,16 +193,7 @@
 
 /* Response Design */
 /* Response Design */
-@media (max-width: 900px) {
-    .modal-body {
-        grid-template-columns: 1fr;
-    }
-
-    .modal-image {
-        padding: 20px;
-    }
-}
-
+/* Response Design */
 @media (max-width: 600px) {
     .links {
         flex-direction: column;

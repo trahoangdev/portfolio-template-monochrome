@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faExternalLinkAlt, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import '../styles/ProjectModal.css';
 
@@ -25,7 +26,7 @@ const ProjectModal = ({ project, onClose }) => {
     return (
         <div className="modal-overlay" onClick={onClose}>
             <div className="modal-content" onClick={e => e.stopPropagation()}>
-                <button className="close-btn" onClick={onClose}>
+                <button className="close-btn" onClick={onClose} aria-label="Close modal">
                     <FontAwesomeIcon icon={faTimes} />
                 </button>
 
@@ -56,6 +57,9 @@ const ProjectModal = ({ project, onClose }) => {
                                     <FontAwesomeIcon icon={faExternalLinkAlt} /> Live Demo
                                 </a>
                             )}
+                            <Link to={`/project/${project.id}`} className="btn btn-secondary">
+                                <FontAwesomeIcon icon={faArrowRight} /> Full Details
+                            </Link>
                             {project.githubUrl && (
                                 <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
                                     <FontAwesomeIcon icon={faGithub} /> Source Code

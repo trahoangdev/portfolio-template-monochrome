@@ -45,23 +45,29 @@ header nav {
     gap: 40px;
 }
 
-header nav span {
+header nav span,
+header nav a {
     cursor: pointer;
     font-weight: 500;
     position: relative;
     color: var(--text-secondary);
     transition: 0.3s;
     text-transform: capitalize;
+    text-decoration: none;
+    /* Basic link reset */
 }
 
 header nav span:hover,
-header nav span.active {
+header nav span.active,
+header nav a:hover,
+header nav a.active {
     color: var(--text-primary);
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
     transition: all 0.3s ease;
 }
 
-header nav span.active::after {
+header nav span.active::after,
+header nav a.active::after {
     content: '';
     position: absolute;
     bottom: -5px;
@@ -124,21 +130,27 @@ header nav span.active::after {
     }
 
     /* Mobile Menu Items */
-    header nav span {
+    header nav span,
+    header nav a {
         font-size: 1.5rem;
         width: 100%;
         text-align: center;
         padding: 15px;
         border-radius: 15px;
+        display: block;
+        /* Ensure route links take full width */
     }
 
     header nav span:hover,
-    header nav span.active {
+    header nav span.active,
+    header nav a:hover,
+    header nav a.active {
         background: var(--glass-hover-bg);
         transform: scale(1.05);
     }
 
-    header nav span.active::after {
+    header nav span.active::after,
+    header nav a.active::after {
         display: none;
         /* Remove underline for mobile, use box style */
     }
