@@ -1,0 +1,199 @@
+.header {
+    position: fixed;
+    width: 100%;
+    height: var(--header-height);
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1002;
+    transition: 0.3s;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-backdrop);
+    border-bottom: var(--glass-border);
+}
+
+.container {
+    width: var(--max-width);
+    max-width: 100%;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+}
+
+.nav {
+    display: flex;
+    gap: 40px;
+}
+
+.nav span,
+.nav a {
+    cursor: pointer;
+    font-weight: 500;
+    position: relative;
+    color: var(--text-secondary);
+    transition: 0.3s;
+    text-transform: capitalize;
+    text-decoration: none;
+}
+
+.nav span:hover,
+.nav span.active,
+.nav a:hover,
+.nav a.active {
+    color: var(--text-primary);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+}
+
+.nav span.active::after,
+.nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+    box-shadow: 0 0 10px var(--primary-accent);
+}
+
+.iconBar {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-primary);
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 768px) {
+    .iconBar {
+        display: block;
+        z-index: 1003;
+    }
+
+    .nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        flex-direction: column;
+        background: var(--bg-color);
+
+        @supports (background: color-mix(in srgb, var(--bg-color), transparent 10%)) {
+            background: color-mix(in srgb, var(--bg-color), transparent 5%);
+        }
+
+        backdrop-filter: blur(25px);
+        padding: 100px 30px;
+        gap: 40px;
+        align-items: center;
+        justify-content: flex-start;
+        transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+        border-left: 1px solid var(--glass-border);
+        z-index: 1002;
+    }
+
+    .nav.active {
+        right: 0;
+    }
+
+    /* Mobile Menu Items */
+    .nav span,
+    .nav a {
+        font-size: 1.5rem;
+        width: 100%;
+        text-align: center;
+        padding: 15px;
+        border-radius: 15px;
+        display: block;
+    }
+
+    .nav span:hover,
+    .nav span.active,
+    .nav a:hover,
+    .nav a.active {
+        background: var(--glass-hover-bg);
+        transform: scale(1.05);
+    }
+
+    .nav span.active::after,
+    .nav a.active::after {
+        display: none;
+    }
+
+    /* Overlay for Mobile Menu */
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(5px);
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.4s ease;
+    }
+
+    .overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.themeToggle {
+    background: var(--glass-bg);
+    border: var(--glass-border);
+    color: var(--text-primary);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 1.2rem;
+    box-shadow: var(--glass-shadow);
+}
+
+.themeToggle:hover {
+    background: var(--primary-accent);
+    color: white;
+    transform: rotate(15deg);
+    box-shadow: 0 0 15px var(--primary-accent);
+}
+
+@media screen and (max-width: 768px) {
+    .actions {
+        margin-left: auto;
+    }
+}

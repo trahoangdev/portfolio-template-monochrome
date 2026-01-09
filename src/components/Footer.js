@@ -2,20 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin, faXTwitter } from '@fortawesome/free-brands-svg-icons';
-import '../styles/Footer.css';
+import styles from '../styles/Footer.module.css';
 
 import { config } from '../data/config';
 
 const Footer = () => {
     return (
-        <footer className="footer">
-            <div className="footer-container">
-                <div className="footer-logo">
+        <footer className={styles.footer}>
+            <div className={styles.container}>
+                <div className={styles.logo}>
                     <h2>{config.nickname}</h2>
                     <p>{config.description}</p>
                 </div>
 
-                <div className="footer-links">
+                <div className={styles.links}>
                     <h3>Explore</h3>
                     <ul>
                         <li><Link to="/blog">Tech Notes</Link></li>
@@ -25,9 +25,9 @@ const Footer = () => {
                     </ul>
                 </div>
 
-                <div className="footer-social">
+                <div className={styles.social}>
                     <h3>Connect</h3>
-                    <div className="social-icons">
+                    <div className={styles.socialIcons}>
                         <a href={config.socials.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                             <FontAwesomeIcon icon={faGithub} />
                         </a>
@@ -40,7 +40,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className="footer-bottom">
+            <div className={styles.bottom}>
                 <p>&copy; {new Date().getFullYear()} trahoangdev. All rights reserved.</p>
             </div>
         </footer>

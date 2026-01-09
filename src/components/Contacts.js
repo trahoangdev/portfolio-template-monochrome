@@ -1,19 +1,17 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, forwardRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane, faEnvelope, faPhone, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { faInstagram, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import useScrollAnimation from '../hooks/useScrollAnimation';
 import Toast from './Toast';
-import '../styles/Contacts.css';
+import styles from '../styles/Contacts.module.css';
 import { config } from '../data/config';
+import env from '../config/env';
 import emailjs from '@emailjs/browser';
 
-// ...
-
-function Contacts() {
+const Contacts = forwardRef((props, ref) => {
   const divs = useRef([]);
-  const scrollTab = useRef();
-  useScrollAnimation(scrollTab, divs);
+  useScrollAnimation(ref, divs);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -24,25 +22,46 @@ function Contacts() {
   const [toast, setToast] = useState(null);
   const [isSending, setIsSending] = useState(false);
 
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    let newErrors = {};
+    if (formData.name.trim().length < 2) {
+      newErrors.name = 'Name must be at least 2 characters.';
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email address.';
+    }
+    if (formData.message.trim().length < 10) {
+      newErrors.message = 'Message must be at least 10 characters.';
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    if (errors[name]) {
+      setErrors({ ...errors, [name]: '' });
+    }
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!validateForm()) return;
     setIsSending(true);
 
-    // Replace with your actual EmailJS credentials
-    // You can get these from https://dashboard.emailjs.com/admin
-    const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
-    const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
-    const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+    const SERVICE_ID = env.emailjs.serviceId;
+    const TEMPLATE_ID = env.emailjs.templateId;
+    const PUBLIC_KEY = env.emailjs.publicKey;
 
     const templateParams = {
       from_name: formData.name,
       from_email: formData.email,
       message: formData.message,
-      to_name: config.name, // Your name
+      to_name: config.name,
     };
 
     emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
@@ -63,7 +82,7 @@ function Contacts() {
   }
 
   return (
-    <section className='contacts' ref={scrollTab} id='contacts'>
+    <section className={styles.contacts} ref={ref} id='contacts'>
       {toast && (
         <Toast
           message={toast.message}
@@ -71,94 +90,100 @@ function Contacts() {
           onClose={() => setToast(null)}
         />
       )}
-      <div className="title" ref={(el) => (divs.current[0] = el)}>
+      <div className={styles.title} ref={(el) => (divs.current[0] = el)}>
         Get In Touch
       </div>
-      <div className="des" ref={(el) => (divs.current[1] = el)}>
+      <div className={styles.sectionDes} ref={(el) => (divs.current[1] = el)}>
         Have a project in mind or just want to say hi? I'd love to hear from you.
       </div>
 
-      <div className="contact-container">
+      <div className={styles.container}>
         {/* Left Side: Contact Info */}
-        <div className="contact-info" ref={(el) => (divs.current[2] = el)}>
+        <div className={styles.info} ref={(el) => (divs.current[2] = el)}>
           <h3>Contact Information</h3>
           <p>Fill up the form and I will get back to you within 24 hours.</p>
 
-          <div className="info-item">
-            <div className="icon"><FontAwesomeIcon icon={faPhone} /></div>
-            <div className="text">
+          <div className={styles.item}>
+            <div className={styles.icon}><FontAwesomeIcon icon={faPhone} /></div>
+            <div className={styles.text}>
               <span>Phone</span>
               <p>{config.phone}</p>
             </div>
           </div>
 
-          <div className="info-item">
-            <div className="icon"><FontAwesomeIcon icon={faEnvelope} /></div>
-            <div className="text">
+          <div className={styles.item}>
+            <div className={styles.icon}><FontAwesomeIcon icon={faEnvelope} /></div>
+            <div className={styles.text}>
               <span>Email</span>
               <p>{config.email}</p>
             </div>
           </div>
 
-          <div className="info-item">
-            <div className="icon"><FontAwesomeIcon icon={faMapMarkerAlt} /></div>
-            <div className="text">
+          <div className={styles.item}>
+            <div className={styles.icon}><FontAwesomeIcon icon={faMapMarkerAlt} /></div>
+            <div className={styles.text}>
               <span>Location</span>
               <p>{config.location}</p>
             </div>
           </div>
 
-          <div className="social-links">
-            <a href={config.socials.github} className="social-icon" aria-label="Github"><FontAwesomeIcon icon={faGithub} /></a>
-            <a href={config.socials.linkedin} className="social-icon" aria-label="LinkedIn"><FontAwesomeIcon icon={faLinkedin} /></a>
-            <a href={config.socials.instagram} className="social-icon" aria-label="Instagram"><FontAwesomeIcon icon={faInstagram} /></a>
+          <div className={styles.socialLinks}>
+            <a href={config.socials.github} className={styles.socialIcon} aria-label="Github"><FontAwesomeIcon icon={faGithub} /></a>
+            <a href={config.socials.linkedin} className={styles.socialIcon} aria-label="LinkedIn"><FontAwesomeIcon icon={faLinkedin} /></a>
+            <a href={config.socials.instagram} className={styles.socialIcon} aria-label="Instagram"><FontAwesomeIcon icon={faInstagram} /></a>
           </div>
         </div>
 
         {/* Right Side: Form */}
-        <form className="contact-form" onSubmit={handleSubmit} ref={(el) => (divs.current[3] = el)}>
-          <div className="form-group">
+        <form className={styles.form} onSubmit={handleSubmit} ref={(el) => (divs.current[3] = el)}>
+          <div className={styles.formGroup}>
             <label>Your Name</label>
             <input
               type="text"
               name="name"
               value={formData.name}
               onChange={handleChange}
+              className={errors.name ? styles.errorInput : ''}
               required
               placeholder="John Doe"
             />
+            {errors.name && <span className={styles.errorText}>{errors.name}</span>}
           </div>
 
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label>Your Email</label>
             <input
               type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
+              className={errors.email ? styles.errorInput : ''}
               required
               placeholder="john@example.com"
             />
+            {errors.email && <span className={styles.errorText}>{errors.email}</span>}
           </div>
 
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label>Message</label>
             <textarea
               name="message"
               rows="5"
               value={formData.message}
               onChange={handleChange}
+              className={errors.message ? styles.errorInput : ''}
               required
               placeholder="What can I help you with?"
             ></textarea>
+            {errors.message && <span className={styles.errorText}>{errors.message}</span>}
           </div>
 
-          <button type="submit" className="submit-btn" disabled={isSending}>
+          <button type="submit" className={styles.button} disabled={isSending}>
             {isSending ? 'Sending...' : 'Send Message'} <FontAwesomeIcon icon={faPaperPlane} />
           </button>
         </form>
       </div>
     </section>
   )
-}
+})
 export default Contacts

@@ -1,82 +1,94 @@
-import { useEffect, useRef } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { changeTabActive } from './redux/actions';
+import { useRef, lazy, Suspense, useEffect } from 'react';
+import { useAppContext } from './context/AppContext';
 import NavBar from './components/NavBar'
 import Home from './components/Home'
 import Skills from './components/Skills'
 import Projects from './components/Projects'
 import Contacts from './components/Contacts'
-
 import { Routes, Route } from 'react-router-dom';
-import NotFound from './components/NotFound';
-import ProjectDetail from './components/ProjectDetail';
-import Uses from './components/Uses';
-import Blog from './components/Blog';
-import BlogPost from './components/BlogPost';
 import Preloader from './components/Preloader';
 import Footer from './components/Footer';
+import { OBSERVER_OPTIONS } from './config/constants';
+
+// Lazy load components
+const ProjectDetail = lazy(() => import('./components/ProjectDetail'));
+const Uses = lazy(() => import('./components/Uses'));
+const Blog = lazy(() => import('./components/Blog'));
+const BlogPost = lazy(() => import('./components/BlogPost'));
+const NotFound = lazy(() => import('./components/NotFound'));
+
 
 function App() {
-  const theme = useSelector(state => state.theme);
+  const { theme, changeTabActive, registerSection } = useAppContext();
 
-  const dispatch = useDispatch();
+  // No need for dispatch as changeTabActive is directly from context
+
   useEffect(() => {
     document.body.setAttribute('data-theme', theme);
   }, [theme]);
+
+  // Refs for sections
+  const homeRef = useRef(null);
+  const skillsRef = useRef(null);
+  const projectsRef = useRef(null);
+  const contactsRef = useRef(null);
+
+  // Register refs to context
+  useEffect(() => {
+    registerSection('home', homeRef);
+    registerSection('skills', skillsRef);
+    registerSection('projects', projectsRef);
+    registerSection('contacts', contactsRef);
+  }, [registerSection]);
 
   // Scroll Spy Logic
   const activeSectionRef = useRef(null); // Track locally to avoid re-renders
 
   useEffect(() => {
-    const handleScrollSpy = () => {
-      const sections = ['home', 'skills', 'projects', 'contacts'];
-      // const scrollPosition = window.scrollY + 200; // Increased offset for better trigger
+    const observerOptions = OBSERVER_OPTIONS.SPY;
 
-      for (const sectionId of sections) {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-
-          // Check if the section is currently in the active viewport zone
-          // '200' is our offset trigger line
-          if (rect.top <= 200 && rect.bottom > 200) {
-            if (activeSectionRef.current !== sectionId) {
-              activeSectionRef.current = sectionId;
-              dispatch(changeTabActive(sectionId));
-            }
-            break;
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          if (activeSectionRef.current !== entry.target.id) {
+            activeSectionRef.current = entry.target.id;
+            changeTabActive(entry.target.id);
           }
         }
-      }
+      });
     };
 
-    window.addEventListener('scroll', handleScrollSpy);
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
 
-    // Check immediately on mount to ensure correct state if page is reloaded or navigated to
-    handleScrollSpy();
+    const sectionsRefs = [homeRef, skillsRef, projectsRef, contactsRef];
+    sectionsRefs.forEach(ref => {
+      if (ref.current) observer.observe(ref.current);
+    });
 
-    return () => window.removeEventListener('scroll', handleScrollSpy);
-  }, [dispatch]);
+    return () => observer.disconnect();
+  }, [changeTabActive]);
 
   return (
-    <Routes>
-      <Route path="/" element={
-        <main>
-          <Preloader />
-          <NavBar />
-          <Home />
-          <Skills />
-          <Projects />
-          <Contacts />
-          <Footer />
-        </main>
-      } />
-      <Route path="/project/:id" element={<ProjectDetail />} />
-      <Route path="/uses" element={<Uses />} />
-      <Route path="/blog" element={<Blog />} />
-      <Route path="/blog/:slug" element={<BlogPost />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <Suspense fallback={<div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Loading...</div>}>
+      <Routes>
+        <Route path="/" element={
+          <main>
+            <Preloader />
+            <NavBar />
+            <Home ref={homeRef} />
+            <Skills ref={skillsRef} />
+            <Projects ref={projectsRef} />
+            <Contacts ref={contactsRef} />
+            <Footer />
+          </main>
+        } />
+        <Route path="/project/:id" element={<ProjectDetail />} />
+        <Route path="/uses" element={<Uses />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Suspense>
   );
 }
 

@@ -1,98 +1,39 @@
-import React, { useRef } from 'react'
-import { useDispatch } from 'react-redux';
-import { changeTabActive } from '../redux/actions';
+import React, { forwardRef } from 'react';
+import { useAppContext } from '../context/AppContext';
 import useScrollAnimation from '../hooks/useScrollAnimation';
-import '../styles/Home.css';
-
+import styles from '../styles/Home.module.css';
+import SEO from './SEO';
 import { config } from '../data/config';
+import AvatarCard from './AvatarCard';
 
-function Home() {
-    const scrollTab = useRef();
-    const cardRef = useRef(null);
-    useScrollAnimation(scrollTab);
-    const dispatch = useDispatch();
+const Home = forwardRef((props, ref) => {
+    useScrollAnimation(ref);
+    const { changeTabActive } = useAppContext();
 
     // Reset active tab to home when mounting this component
     React.useEffect(() => {
-        dispatch(changeTabActive('home'));
-        document.title = config.seo.title;
-        window.scrollTo(0, 0); // Ensure we start at the top
-    }, [dispatch]);
-
-    const [rotation, setRotation] = React.useState({ x: 0, y: 0 });
-    const [glare, setGlare] = React.useState({ x: 50, y: 50, opacity: 0 });
-    const [imageLoaded, setImageLoaded] = React.useState(false);
-
-    const handleMouseMove = (e) => {
-        const card = cardRef.current;
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        const rotateX = ((y - centerY) / centerY) * -10; // Max rotation 10deg
-        const rotateY = ((x - centerX) / centerX) * 10;
-
-        setRotation({ x: rotateX, y: rotateY });
-        setGlare({ x: (x / rect.width) * 100, y: (y / rect.height) * 100, opacity: 1 });
-    };
-
-    const handleMouseLeave = () => {
-        setRotation({ x: 0, y: 0 });
-        setGlare(prev => ({ ...prev, opacity: 0 }));
-    };
+        // We only want to set 'home' active on initial mount if needed, 
+        // but 'App.js' IntersectionObserver will handle active state on scroll.
+    }, []);
 
     return (
-        <section ref={scrollTab} className='home' id='home'>
-            <div className="content">
-                <div className="name">
+        <section ref={ref} className={styles.home} id='home'>
+            <SEO />
+            <div className={styles.content}>
+                <div className={styles.name}>
                     MY NAME IS <span>{config.name}</span>
                 </div>
-                <div className="des">
+                <div className={styles.des}>
                     {config.description}
                 </div>
 
-                <a href={config.cvLink} target="_blank" rel="noopener noreferrer" className='animation active '>
+                <a href={config.cvLink} target="_blank" rel="noopener noreferrer" className={`animation active ${styles.button}`}>
                     Download My CV
                 </a>
             </div>
-            <div className="avatar">
-                <div
-                    className="card"
-                    ref={cardRef}
-                    onMouseMove={handleMouseMove}
-                    onMouseLeave={handleMouseLeave}
-                    style={{
-                        transform: `perspective(1000px) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
-                    }}
-                >
-                    {/* Glare Effect */}
-                    <div
-                        className="glare"
-                        style={{
-                            background: `radial-gradient(circle at ${glare.x}% ${glare.y}%, rgba(255,255,255,0.3) 0%, transparent 80%)`,
-                            opacity: glare.opacity
-                        }}
-                    ></div>
 
-                    {!imageLoaded && <div className="skeleton-loading" style={{ height: '450px', width: '100%', borderRadius: '20px' }}></div>}
-                    <img
-                        src="/avatar.webp"
-                        alt="Avatar"
-                        onLoad={() => setImageLoaded(true)}
-                        style={{ display: imageLoaded ? 'block' : 'none' }}
-                    />
-                    <div className="info">
-                        <div>{config.role}</div>
-                        <div>{config.nationality}</div>
-                        <div>{config.birthday}</div>
-                        <div>{config.gender}</div>
-                    </div>
-                </div>
-            </div>
+            <AvatarCard />
         </section>
     )
-}
+})
 export default Home

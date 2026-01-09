@@ -4,17 +4,16 @@ import { projects } from '../data/projects';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import '../styles/ProjectDetail.css';
+import styles from '../styles/ProjectDetail.module.css';
 import { config } from '../data/config';
+import SEO from './SEO';
+import ImageWithFallback from './ImageWithFallback';
 
 const ProjectDetail = () => {
     const { id } = useParams();
     const project = projects.find(p => p.id === parseInt(id));
 
     useEffect(() => {
-        if (project) {
-            document.title = `${project.name} | ${config.name}`;
-        }
         window.scrollTo(0, 0);
     }, [project]);
 
@@ -23,39 +22,44 @@ const ProjectDetail = () => {
     }
 
     return (
-        <div className="project-detail">
-            <div className="container">
-                <Link to="/" className="back-btn">
+        <div className={styles.projectDetail}>
+            <SEO
+                title={project.name}
+                description={project.des}
+                type="article"
+            />
+            <div className={styles.container}>
+                <Link to="/" className={styles.backBtn}>
                     <FontAwesomeIcon icon={faArrowLeft} /> Back to Home
                 </Link>
 
-                <div className="project-header">
+                <div className={styles.header}>
                     <h1>{project.name}</h1>
-                    <div className="meta">
+                    <div className={styles.meta}>
                         <span>{project.mission}</span>
                     </div>
                 </div>
 
-                <div className="project-showcase">
-                    <img src={project.images} alt={project.name} className="main-image" />
+                <div className={styles.showcase}>
+                    <ImageWithFallback src={project.images} alt={project.name} className="main-image" />
                 </div>
 
-                <div className="project-content">
+                <div className={styles.content}>
                     <div className="description">
                         <h2>Overview</h2>
                         <p>{project.des}</p>
                     </div>
 
-                    <div className="tech-stack">
+                    <div className={styles.techStack}>
                         <h2>Technologies</h2>
                         <p>{project.language}</p>
                     </div>
 
-                    <div className="actions">
-                        <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="btn-primary">
+                    <div className={styles.actions}>
+                        <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className={styles.btnPrimary}>
                             <FontAwesomeIcon icon={faGlobe} /> Live Demo
                         </a>
-                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="btn-secondary">
+                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className={styles.btnSecondary}>
                             <FontAwesomeIcon icon={faGithub} /> Source Code
                         </a>
                     </div>

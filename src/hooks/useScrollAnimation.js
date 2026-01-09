@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { OBSERVER_OPTIONS } from '../config/constants';
 
 const useScrollAnimation = (refTab = null, refList = null) => {
   const divs = refList;
@@ -6,40 +7,38 @@ const useScrollAnimation = (refTab = null, refList = null) => {
 
 
   useEffect(() => {
-    // Animation logic
     if (divs && divs.current) {
-      // Filter out null/undefined refs once
+      // Filter out null/undefined refs
       const elements = divs.current.filter(e => e !== null && e !== undefined);
 
       elements.forEach((div) => {
         div.classList.add('animation');
       });
 
-      const handleScroll = () => {
-        const scrollPosition = window.scrollY;
-        elements.forEach((div) => {
-          // Double check if element is still connected
-          if (!div.isConnected) return;
+      const observerOptions = OBSERVER_OPTIONS.ANIMATION;
 
-          const rect = div.getBoundingClientRect();
-          const offsetTop = rect.top + scrollPosition;
-
-          if (scrollPosition >= offsetTop - (window.innerHeight / 1.3)) {
-            div.classList.add('active');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
           } else {
-            div.classList.remove('active');
+            // If not intersecting, check if it's below the viewport.
+            // If boundingClientRect.top > 0, it means it's below the viewport (scrolled up).
+            // We typically remove 'active' only if we scroll back up, not if we scroll past it down.
+            if (entry.boundingClientRect.top > 0) {
+              entry.target.classList.remove('active');
+            }
           }
         });
-      };
+      }, observerOptions);
 
-      handleScroll();
-      window.addEventListener('scroll', handleScroll);
+      elements.forEach((div) => {
+        if (div) observer.observe(div);
+      });
 
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-      };
+      return () => observer.disconnect();
     }
-  }, [divs]); // Only re-run if divs ref structure changes (which shouldn't happen often)
+  }, [divs]);
 };
 
 export default useScrollAnimation;
