@@ -1,0 +1,126 @@
+.usesPage {
+    min-height: 100vh;
+    padding: 100px 0 60px;
+    background: var(--bg-color);
+    color: var(--text-primary);
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.backBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: 0.3s;
+    margin-bottom: 40px;
+}
+
+.backBtn:hover {
+    color: var(--text-primary);
+    transform: translateX(-5px);
+}
+
+.header {
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 3.5rem;
+    font-family: var(--font-heading);
+    margin-bottom: 15px;
+    background: linear-gradient(90deg, var(--title-gradient-from), var(--title-gradient-to));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.header p {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
+
+.grid {
+    display: grid;
+    gap: 40px;
+}
+
+.category {
+    background: var(--glass-bg);
+    border: var(--glass-border);
+    border-radius: 20px;
+    padding: 30px;
+    transition: 0.3s;
+}
+
+.category:hover {
+    background: var(--glass-hover-bg);
+    transform: translateY(-5px);
+}
+
+.category h2 {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: var(--primary-accent);
+}
+
+.category ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.category li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.category li:last-child {
+    border-bottom: none;
+}
+
+:global([data-theme='light']) .category li {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.category li strong {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.category li span {
+    color: var(--text-secondary);
+    text-align: right;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .header h1 {
+        font-size: 2.5rem;
+    }
+
+    .category li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .category li span {
+        text-align: left;
+    }
+}

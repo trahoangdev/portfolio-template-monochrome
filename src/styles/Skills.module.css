@@ -1,0 +1,89 @@
+.skills {
+    padding: 100px 0;
+    position: relative;
+}
+
+.title {
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, var(--title-gradient-from), var(--title-gradient-to));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.des {
+    /* Shared style for standard description blocks */
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 60px;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 20px;
+}
+
+.item {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: var(--glass-border);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    transition: 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.item:hover {
+    transform: translateY(-10px);
+    background: var(--glass-hover-bg);
+    box-shadow: var(--glass-shadow);
+    border-color: var(--text-secondary);
+}
+
+.item svg {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    color: var(--primary-accent);
+    transition: 0.3s;
+    /* Glow effect */
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+}
+
+.item:hover svg {
+    transform: scale(1.1);
+    color: var(--highlight);
+    filter: drop-shadow(0 0 20px var(--primary-accent));
+}
+
+.item h3 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+    color: var(--text-primary);
+}
+
+.item .des {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .list {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+}

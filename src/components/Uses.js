@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faLaptopCode, faKeyboard, faMicrochip } from '@fortawesome/free-solid-svg-icons';
-import '../styles/Uses.css';
+import styles from '../styles/Uses.module.css';
 import { config } from '../data/config';
 
 const Uses = () => {
@@ -12,19 +12,19 @@ const Uses = () => {
     }, []);
 
     return (
-        <div className="uses-page">
-            <div className="container">
-                <Link to="/" className="back-btn">
+        <div className={styles.usesPage}>
+            <div className={styles.container}>
+                <Link to="/" className={styles.backBtn}>
                     <FontAwesomeIcon icon={faArrowLeft} /> Back to Home
                 </Link>
 
-                <div className="uses-header">
+                <div className={styles.header}>
                     <h1>Uses</h1>
                     <p>A curated list of the tech, hardware, and software I use daily.</p>
                 </div>
 
-                <div className="uses-grid">
-                    <div className="uses-category">
+                <div className={styles.grid}>
+                    <div className={styles.category}>
                         <h2><FontAwesomeIcon icon={faLaptopCode} /> Hardware</h2>
                         <ul>
                             <li>
@@ -46,7 +46,7 @@ const Uses = () => {
                         </ul>
                     </div>
 
-                    <div className="uses-category">
+                    <div className={styles.category}>
                         <h2><FontAwesomeIcon icon={faKeyboard} /> Peripherals</h2>
                         <ul>
                             <li>
@@ -64,7 +64,7 @@ const Uses = () => {
                         </ul>
                     </div>
 
-                    <div className="uses-category">
+                    <div className={styles.category}>
                         <h2><FontAwesomeIcon icon={faMicrochip} /> Software</h2>
                         <ul>
                             <li>
@@ -90,5 +90,4 @@ const Uses = () => {
         </div>
     );
 };
-
 export default Uses;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../styles/Preloader.css';
+import styles from '../styles/Preloader.module.css';
 
 const Preloader = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -17,12 +17,12 @@ const Preloader = () => {
     if (!isLoading) return null;
 
     return (
-        <div className={`preloader ${fadeResult ? 'fade-out' : ''}`}>
-            <div className="loader-content">
-                <div className="hexagon" aria-label="Loading animation">
-                    <div className="hexagon-inner"></div>
+        <div className={`${styles.preloader} ${fadeResult ? styles.fadeOut : ''}`}>
+            <div className={styles.content}>
+                <div className={styles.hexagon} aria-label="Loading animation">
+                    <div className={styles.inner}></div>
                 </div>
-                <div className="loader-text">
+                <div className={styles.text}>
                     <span>L</span>
                     <span>O</span>
                     <span>A</span>

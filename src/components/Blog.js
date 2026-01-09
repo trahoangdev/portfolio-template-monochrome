@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faCalendarAlt, faClock } from '@fortawesome/free-solid-svg-icons';
-import '../styles/Blog.css';
+import styles from '../styles/Blog.module.css';
 import { config } from '../data/config';
+import SEO from './SEO';
 
 const Blog = () => {
     useEffect(() => {
-        document.title = `Tech Notes | ${config.name}`;
         window.scrollTo(0, 0);
     }, []);
 
@@ -42,32 +42,36 @@ const Blog = () => {
     ];
 
     return (
-        <div className="blog-page">
-            <div className="container">
-                <Link to="/" className="back-btn">
+        <div className={styles.blogPage}>
+            <SEO
+                title="Tech Notes"
+                description="Thoughts, tutorials, and snippets about web development."
+            />
+            <div className={styles.container}>
+                <Link to="/" className={styles.backBtn}>
                     <FontAwesomeIcon icon={faArrowLeft} /> Back to Home
                 </Link>
 
-                <div className="blog-header">
+                <div className={styles.header}>
                     <h1>Tech Notes</h1>
                     <p>Thoughts, tutorials, and snippets about web development.</p>
                 </div>
 
-                <div className="blog-grid">
+                <div className={styles.grid}>
                     {posts.map(post => (
-                        <div key={post.id} className="blog-card">
-                            <div className="post-meta">
+                        <div key={post.id} className={styles.card}>
+                            <div className={styles.meta}>
                                 <span><FontAwesomeIcon icon={faCalendarAlt} /> {post.date}</span>
                                 <span><FontAwesomeIcon icon={faClock} /> {post.readTime}</span>
                             </div>
                             <h2>{post.title}</h2>
                             <p>{post.excerpt}</p>
-                            <div className="tags">
+                            <div className={styles.tags}>
                                 {post.tags.map((tag, i) => (
-                                    <span key={i} className="tag">{tag}</span>
+                                    <span key={i} className={styles.tag}>{tag}</span>
                                 ))}
                             </div>
-                            <Link to={`/blog/${post.slug}`} className="read-more">Read Article &rarr;</Link>
+                            <Link to={`/blog/${post.slug}`} className={styles.readMore}>Read Article &rarr;</Link>
                         </div>
                     ))}
                 </div>

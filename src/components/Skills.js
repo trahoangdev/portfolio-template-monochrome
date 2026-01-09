@@ -1,37 +1,36 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, forwardRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useScrollAnimation from '../hooks/useScrollAnimation';
 import { skills } from '../data/skills';
-import '../styles/Skills.css';
+import styles from '../styles/Skills.module.css';
 
-function Skills() {
+const Skills = forwardRef((props, ref) => {
   const divs = useRef([]);
-  const scrollTab = useRef();
-  useScrollAnimation(scrollTab, divs);
+  useScrollAnimation(ref, divs);
   const [listSkills] = useState(skills);
 
   return (
-    <section className='skills' ref={scrollTab} id='skills'>
-      <div className="title" ref={(el) => (divs.current[0] = el)}>
+    <section className={styles.skills} ref={ref} id='skills'>
+      <div className={styles.title} ref={(el) => (divs.current[0] = el)}>
         My Skills
       </div>
-      <div className="des" ref={(el) => (divs.current[1] = el)}>
+      <div className={styles.des} ref={(el) => (divs.current[1] = el)}>
         I differ from many other developers in that I have a business first approach to development.
       </div>
-      <div className="list">
+      <div className={styles.list}>
         {
           listSkills.map((value, key) => (
-            <div className={'item '} key={key} ref={(el) => (divs.current[key + 2] = el)}>
+            <div className={styles.item} key={key} ref={(el) => (divs.current[key + 2] = el)}>
               <FontAwesomeIcon icon={value.icon} />
               <h3>{value.name}</h3>
-              <div className="des">{value.des}</div>
+              <div className={styles.des}>{value.des}</div>
             </div>
           ))
         }
       </div>
     </section>
   )
-}
+})
 
 export default Skills
 

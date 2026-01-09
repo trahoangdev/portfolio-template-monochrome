@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faExternalLinkAlt, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import '../styles/ProjectModal.css';
+import PropTypes from 'prop-types';
 
 const ProjectModal = ({ project, onClose }) => {
     // Close on Escape key
@@ -71,6 +72,20 @@ const ProjectModal = ({ project, onClose }) => {
             </div>
         </div>
     );
+};
+
+ProjectModal.propTypes = {
+    project: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        images: PropTypes.string.isRequired,
+        language: PropTypes.string.isRequired,
+        mission: PropTypes.string.isRequired,
+        des: PropTypes.string.isRequired,
+        demoUrl: PropTypes.string,
+        githubUrl: PropTypes.string,
+    }),
+    onClose: PropTypes.func.isRequired,
 };
 
 export default ProjectModal;
