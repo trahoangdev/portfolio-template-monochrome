@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-import { useAppContext } from '../context/AppContext';
 import useScrollAnimation from '../hooks/useScrollAnimation';
 import styles from '../styles/Home.module.css';
 import SEO from './SEO';
@@ -8,7 +7,6 @@ import AvatarCard from './AvatarCard';
 
 const Home = forwardRef((props, ref) => {
     useScrollAnimation(ref);
-    const { changeTabActive } = useAppContext();
 
     // Reset active tab to home when mounting this component
     React.useEffect(() => {
