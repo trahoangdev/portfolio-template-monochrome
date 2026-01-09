@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import styles from '../styles/ProjectDetail.module.css';
-import { config } from '../data/config';
+
 import SEO from './SEO';
 import ImageWithFallback from './ImageWithFallback';
 

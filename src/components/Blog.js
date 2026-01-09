@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faCalendarAlt, faClock } from '@fortawesome/free-solid-svg-icons';
 import styles from '../styles/Blog.module.css';
-import { config } from '../data/config';
+
 import SEO from './SEO';
 
 const Blog = () => {
